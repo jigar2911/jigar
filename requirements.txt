@@ -1,0 +1,13 @@
+numpy
+opencv-python
+pillow
+torch
+torchvision
+gradio
+ffmpeg-python
+requests
+tqdm
+pyyaml
+scipy
+scikit-image
+easyocr
