@@ -4,6 +4,7 @@ import cv2
 from PIL import Image
 import os
 import uuid
+import webbrowser
 from inpainting import get_inpainter
 from video_utils import process_video, extract_first_frame
 from detection import find_similar_logos, detect_text_masks
@@ -101,4 +102,12 @@ with gr.Blocks() as demo:
         vid_process_btn.click(handle_video, inputs=[vid_input, vid_mask_input], outputs=vid_output)
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0")
+    # share=True creates a public link (gradio.live)
+    # which allows "all users" to access it as requested.
+    print("Launching AI Watermark Remover...")
+    # Attempt to open browser automatically
+    try:
+        webbrowser.open("http://127.0.0.1:7860")
+    except:
+        pass
+    demo.launch(server_name="0.0.0.0", share=True)

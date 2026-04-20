@@ -2,6 +2,16 @@
 echo AI Watermark Remover - Windows Setup
 echo.
 
+:: Check for FFmpeg
+ffmpeg -version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Error: FFmpeg is not installed or not in your PATH.
+    echo FFmpeg is required for video processing.
+    echo Please install it from https://ffmpeg.org/download.html and add it to your PATH.
+    pause
+    exit /b
+)
+
 :: Check for Python
 python --version >nul 2>&1
 if %errorlevel% neq 0 (

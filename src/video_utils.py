@@ -17,8 +17,9 @@ def process_video(video_path, mask_generator, inpainter, output_path):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-    # Use a temporary file for the video without audio
-    temp_output = "temp_processed.mp4"
+    # Use a unique temporary file for the video without audio to avoid race conditions
+    import uuid
+    temp_output = f"temp_{uuid.uuid4().hex}.mp4"
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(temp_output, fourcc, fps, (width, height))
 
